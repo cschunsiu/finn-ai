@@ -7,16 +7,6 @@ class User {
         this.username = username;
         this.email = email;
     }
-
-    getDetails() {
-        const user = {
-            name: this.name,
-            id: this.id,
-            username: this.username,
-            email: this.email,
-        }
-        return user;
-    }
 }
 
 exports.User = User;

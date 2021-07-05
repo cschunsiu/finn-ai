@@ -7,7 +7,6 @@ const storage = new HandyStorage({ beautify: true });
 
 storage.connect('src/storage/store.json');
 
-
 router.get('/', async function (req, res) {
     const user = storage.state;
     res.status(201).send(user);
