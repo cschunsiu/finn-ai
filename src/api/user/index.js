@@ -18,10 +18,11 @@ router.post('/', async function (req, res) {
 
     if (randomNumber > 4) {
         res.status(500).send('Request fails for creating user.');
+        return;
     }
 
     const newUser = new User('Johnny Depp', 'jDepp', 'mr.j@gmail.com');
-    storage.setState(newUser);
+    await storage.setState(newUser);
 
     res.status(200).send({newUser})
 });

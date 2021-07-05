@@ -3,6 +3,7 @@ let server = require('../src/index');
 let chaiHttp = require('chai-http');
 
 should = chai.should();
+const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('/id', () => {
@@ -27,11 +28,9 @@ describe('/user', () => {
         });
     });
 
-    it('it should Create a user or fail', (done) => {
-        chai.request(server)
-            .post("/user").end(async (err, res) => {
-            res.should.have.status(200 || 500 );
-            done();
-        });
+    it('it should Create a user or fail', async () => {
+        const response = await chai.request(server).post('/user');
+        response.body.should.be.a('object');
+        expect(response.status).to.satisfy(function(status) { return status === 200 || status === 500; });
     });
 });
